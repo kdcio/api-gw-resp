@@ -1,9 +1,7 @@
 import 'regenerator-runtime/runtime';
-import response from '../src/index';
+import { response, RESP_TEMPLATE } from '../src/index';
 
 describe('Build response', () => {
-  const { RESP_TEMPLATE } = response;
-
   [
     {
       description: 'OK response',

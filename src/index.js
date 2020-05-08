@@ -1,4 +1,4 @@
-const RESP_TEMPLATE = {
+export const RESP_TEMPLATE = {
   statusCode: 200,
   isBase64Encoded: false,
   headers: {
@@ -54,7 +54,7 @@ const POST = (opts = {}) => CREATED(opts);
 const PUT = (opts = {}) => NO_CONTENT(opts);
 const DELETE = (opts = {}) => NO_CONTENT(opts);
 
-export default {
+export const response = {
   OK,
   CREATED,
   NO_CONTENT,
@@ -68,5 +68,4 @@ export default {
   POST,
   PUT,
   DELETE,
-  RESP_TEMPLATE,
 };
