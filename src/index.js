@@ -1,4 +1,4 @@
-export const RESP_TEMPLATE = {
+const RESP_TEMPLATE = {
   statusCode: 200,
   isBase64Encoded: false,
   headers: {
@@ -68,4 +68,5 @@ export default {
   POST,
   PUT,
   DELETE,
+  RESP_TEMPLATE,
 };
