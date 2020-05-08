@@ -17,17 +17,15 @@
     "lint:fix": "eslint src --ext .js --fix",
     "lint": "eslint src --ext .js"
   },
-  "author": "Melchor Bungalso <melchor@kdcsoftware.com> (https://www.kdcsoftware.com)",
-  "contributors": [
-    "Ian Dela Cruz <ian@kdcsoftware.com> (https://www.kdcsoftware.com)"
-  ],
+  "author": "Ian Dela Cruz <ian@kdcsoftware.com> (https://www.kdcsoftware.com)",
   "license": "MIT",
   "keywords": [
     "kdc",
     "aws",
     "api",
     "gateway",
-    "lambda"
+    "lambda",
+    "response"
   ],
   "devDependencies": {
     "@babel/cli": "^7.8.4",
