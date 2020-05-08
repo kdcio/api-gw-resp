@@ -71,3 +71,49 @@ All of the methods have the same API.
 | body    | null    | JS object that will converted into JSON string. If present, a _Content-Type_ of _application/json_ will be added to the header. |
 | cors    | true    | Add cors in header                                                                                                              |
 | headers | {}      | Additional headers                                                                                                              |
+
+## Examples
+
+```js
+const parser = require('@kdcsoftware/api-gw-req');
+const response = require('@kdcsoftware/api-gw-resp');
+const db = require('./db');
+
+module.exports = async (event) => {
+  const request = parser(event);
+  let body = null;
+
+  if (event.method === 'GET') {
+    try {
+      const movies = db.listMovies();
+      return response.GET({ body: { movies } });
+    } catch (e) {
+      return response.BAD_REQUEST({ body: e });
+    }
+  } else if (event.method === 'POST') {
+    try {
+      const id = await db.insertMove(request.body);
+      return response.POST({ body: { id } });
+    } catch (e) {
+      return response.BAD_REQUEST({ body: e });
+    }
+  } else if (event.method === 'PUT') {
+    try {
+      await db.updateMove(request.body);
+      return response.PUT();
+    } catch (e) {
+      return response.CONFLICT({ body: e });
+    }
+  }
+
+  return response.BAD_REQUEST({
+    body: {
+      message: 'Invalid method',
+    },
+  });
+};
+```
+
+## See also
+
+[@kdcsoftware/api-gw-req](https://github.com/kdcsoftware/api-gw-req)
