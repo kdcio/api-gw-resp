@@ -9,6 +9,10 @@ describe('Build response', () => {
       body: { message: 'hello world' },
       expected: {
         ...RESP_TEMPLATE,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ message: 'hello world' }),
       },
     },
@@ -24,6 +28,10 @@ describe('Build response', () => {
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 201,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ message: 'hello world' }),
       },
     },
@@ -59,6 +67,10 @@ describe('Build response', () => {
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 400,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ message: 'bad' }),
       },
     },
@@ -77,6 +89,10 @@ describe('Build response', () => {
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 401,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ message: 'wrong password' }),
       },
     },
@@ -95,6 +111,10 @@ describe('Build response', () => {
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 403,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ message: 'no permission' }),
       },
     },
@@ -113,6 +133,10 @@ describe('Build response', () => {
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 404,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ message: 'no here' }),
       },
     },
@@ -131,6 +155,10 @@ describe('Build response', () => {
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 409,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ message: 'you are late' }),
       },
     },
@@ -149,6 +177,10 @@ describe('Build response', () => {
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 500,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ message: 'ooopss' }),
       },
     },
@@ -167,6 +199,10 @@ describe('Build response', () => {
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 200,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ message: 'hello world' }),
       },
     },
@@ -185,6 +221,10 @@ describe('Build response', () => {
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 201,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ message: 'hello world' }),
       },
     },
@@ -236,6 +276,21 @@ describe('Build response', () => {
       if (expected) {
         expect(request).toEqual(expected);
       }
+    });
+  });
+
+  test('GET with no cors', async () => {
+    const request = response.OK({
+      body: { message: 'hello world' },
+      cors: false,
+    });
+
+    expect(request).toEqual({
+      ...RESP_TEMPLATE,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ message: 'hello world' }),
     });
   });
 });

@@ -9,9 +9,20 @@ export const RESP_TEMPLATE = {
   body: null,
 };
 
-const buildResponse = ({ statusCode, body }) => {
+const buildResponse = ({
+  statusCode,
+  body,
+  cors = true,
+  headers = {},
+  ...opts
+}) => {
   const response = {
     ...RESP_TEMPLATE,
+    headers:
+      cors === false
+        ? { ...headers }
+        : { ...RESP_TEMPLATE.headers, ...headers },
+    ...opts,
     statusCode,
   };
 
