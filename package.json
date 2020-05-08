@@ -18,6 +18,11 @@
     "lint": "eslint src --ext .js"
   },
   "author": "Ian Dela Cruz <ian@kdcsoftware.com> (https://www.kdcsoftware.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kdcsoftware/api-gw-resp"
+  },
+  "homepage": "https://github.com/kdcsoftware/api-gw-resp",
   "license": "MIT",
   "keywords": [
     "kdc",
