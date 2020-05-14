@@ -76,7 +76,7 @@ describe('Build response', () => {
     {
       description: 'BAD_REQUEST response',
       method: 'BAD_REQUEST',
-      body: { message: 'bad' },
+      errorMsg: 'my bad',
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 400,
@@ -84,7 +84,7 @@ describe('Build response', () => {
           ...RESP_TEMPLATE.headers,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: 'bad' }),
+        body: JSON.stringify({ error: 'my bad' }),
       },
     },
     {
@@ -98,7 +98,7 @@ describe('Build response', () => {
     {
       description: 'UNAUTHORIZED response',
       method: 'UNAUTHORIZED',
-      body: { message: 'wrong password' },
+      errorMsg: 'wrong password',
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 401,
@@ -106,7 +106,7 @@ describe('Build response', () => {
           ...RESP_TEMPLATE.headers,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: 'wrong password' }),
+        body: JSON.stringify({ error: 'wrong password' }),
       },
     },
     {
@@ -120,7 +120,7 @@ describe('Build response', () => {
     {
       description: 'FORBIDDEN response',
       method: 'FORBIDDEN',
-      body: { message: 'no permission' },
+      errorMsg: 'no permission',
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 403,
@@ -128,7 +128,7 @@ describe('Build response', () => {
           ...RESP_TEMPLATE.headers,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: 'no permission' }),
+        body: JSON.stringify({ error: 'no permission' }),
       },
     },
     {
@@ -142,7 +142,7 @@ describe('Build response', () => {
     {
       description: 'NOT_FOUND response',
       method: 'NOT_FOUND',
-      body: { message: 'no here' },
+      errorMsg: 'no here',
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 404,
@@ -150,7 +150,7 @@ describe('Build response', () => {
           ...RESP_TEMPLATE.headers,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: 'no here' }),
+        body: JSON.stringify({ error: 'no here' }),
       },
     },
     {
@@ -164,7 +164,7 @@ describe('Build response', () => {
     {
       description: 'CONFLICT response',
       method: 'CONFLICT',
-      body: { message: 'you are late' },
+      errorMsg: 'you are late',
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 409,
@@ -172,7 +172,7 @@ describe('Build response', () => {
           ...RESP_TEMPLATE.headers,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: 'you are late' }),
+        body: JSON.stringify({ error: 'you are late' }),
       },
     },
     {
@@ -186,7 +186,7 @@ describe('Build response', () => {
     {
       description: 'SERVER_ERROR response',
       method: 'SERVER_ERROR',
-      body: { message: 'ooopss' },
+      errorMsg: 'ooopss',
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 500,
@@ -194,7 +194,7 @@ describe('Build response', () => {
           ...RESP_TEMPLATE.headers,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: 'ooopss' }),
+        body: JSON.stringify({ error: 'ooopss' }),
       },
     },
     {
@@ -283,9 +283,12 @@ describe('Build response', () => {
         statusCode: 204,
       },
     },
-  ].forEach(({ description, method, body, expected }) => {
+  ].forEach(({ description, method, body, errorMsg, expected }) => {
     test(description, async () => {
-      const request = body ? response[method]({ body }) : response[method]();
+      let request;
+      if (body) request = response[method]({ body });
+      else if (errorMsg) request = response[method]({ message: errorMsg });
+      else request = response[method]();
       if (expected) {
         expect(request).toEqual(expected);
       }

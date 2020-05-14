@@ -44,12 +44,22 @@ const NO_CONTENT = (opts = {}) =>
   buildResponse({ statusCode: 204, ...opts, body: null });
 
 /** Failed operation */
-const BAD_REQUEST = (opts = {}) => buildResponse({ statusCode: 400, ...opts });
-const UNAUTHORIZED = (opts = {}) => buildResponse({ statusCode: 401, ...opts });
-const FORBIDDEN = (opts = {}) => buildResponse({ statusCode: 403, ...opts });
-const NOT_FOUND = (opts = {}) => buildResponse({ statusCode: 404, ...opts });
-const CONFLICT = (opts = {}) => buildResponse({ statusCode: 409, ...opts });
-const SERVER_ERROR = (opts = {}) => buildResponse({ statusCode: 500, ...opts });
+const buildErrorResponse = ({ message, ...opts }) => {
+  if (message) return buildResponse({ ...opts, body: { error: message } });
+  return buildResponse({ ...opts });
+};
+const BAD_REQUEST = (opts = {}) =>
+  buildErrorResponse({ statusCode: 400, ...opts });
+const UNAUTHORIZED = (opts = {}) =>
+  buildErrorResponse({ statusCode: 401, ...opts });
+const FORBIDDEN = (opts = {}) =>
+  buildErrorResponse({ statusCode: 403, ...opts });
+const NOT_FOUND = (opts = {}) =>
+  buildErrorResponse({ statusCode: 404, ...opts });
+const CONFLICT = (opts = {}) =>
+  buildErrorResponse({ statusCode: 409, ...opts });
+const SERVER_ERROR = (opts = {}) =>
+  buildErrorResponse({ statusCode: 500, ...opts });
 
 /** SUccessful response via method */
 const GET = (opts) => OK(opts);
