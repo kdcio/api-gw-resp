@@ -1,10 +1,10 @@
 # API Gateway Response Builder
 
-![ver](https://img.shields.io/npm/v/@kdcsoftware/api-gw-resp?style=for-the-badge)
-![build](https://img.shields.io/github/workflow/status/kdcsoftware/api-gw-resp/build?style=for-the-badge)
-![codecov](https://img.shields.io/codecov/c/github/kdcsoftware/api-gw-resp?style=for-the-badge)
-![size](https://img.shields.io/bundlephobia/min/@kdcsoftware/api-gw-resp?style=for-the-badge)
-![license](https://img.shields.io/github/license/kdcsoftware/api-gw-resp?style=for-the-badge)
+[![ver](https://img.shields.io/npm/v/@kdcsoftware/api-gw-resp?style=for-the-badge)](https://www.npmjs.com/package/@kdcsoftware/api-gw-resp)
+[![build](https://img.shields.io/github/workflow/status/kdcsoftware/api-gw-resp/build?style=for-the-badge)](https://github.com/kdcsoftware/api-gw-resp/actions?query=workflow%3Abuild)
+[![codecov](https://img.shields.io/codecov/c/github/kdcsoftware/api-gw-resp?style=for-the-badge)](https://codecov.io/gh/kdcsoftware/api-gw-resp)
+[![size](https://img.shields.io/bundlephobia/min/@kdcsoftware/api-gw-resp?style=for-the-badge)](https://bundlephobia.com/result?p=@kdcsoftware/api-gw-resp)
+[![license](https://img.shields.io/github/license/kdcsoftware/api-gw-resp?style=for-the-badge)](https://github.com/kdcsoftware/api-gw-resp/blob/master/LICENSE)
 
 This module will help you build a valid API Gateway response from your lambda function.
 
