@@ -22,6 +22,19 @@ describe('Build response', () => {
       expected: { ...RESP_TEMPLATE },
     },
     {
+      description: 'OK response string body',
+      method: 'OK',
+      body: 'pong',
+      expected: {
+        ...RESP_TEMPLATE,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'text/plain',
+        },
+        body: 'pong',
+      },
+    },
+    {
       description: 'CREATED response',
       method: 'CREATED',
       body: { message: 'hello world' },

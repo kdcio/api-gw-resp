@@ -26,9 +26,12 @@ const buildResponse = ({
     statusCode,
   };
 
-  if (body) {
+  if (body && typeof body === 'object') {
     response.body = JSON.stringify(body);
     response.headers['Content-Type'] = 'application/json';
+  } else if (body && typeof body === 'string') {
+    response.body = body;
+    response.headers['Content-Type'] = 'text/plain';
   }
 
   return response;
