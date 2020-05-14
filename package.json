@@ -1,6 +1,6 @@
 {
   "name": "@kdcsoftware/api-gw-resp",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "API Gateway response builder",
   "main": "lib/index.js",
   "files": [
