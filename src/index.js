@@ -43,10 +43,23 @@ const CREATED = (opts = {}) => buildResponse({ statusCode: 201, ...opts });
 const NO_CONTENT = (opts = {}) =>
   buildResponse({ statusCode: 204, ...opts, body: null });
 
+const ERRORS = {
+  '400': 'Bad Request',
+  '401': 'Unauthorized',
+  '403': 'Forbidden',
+  '404': 'Not Found',
+  '409': 'Conflict',
+  '500': 'Internal Server Error',
+};
+
 /** Failed operation */
-const buildErrorResponse = ({ message, ...opts }) => {
-  if (message) return buildResponse({ ...opts, body: { error: message } });
-  return buildResponse({ ...opts });
+const buildErrorResponse = ({ statusCode, error, message, ...opts }) => {
+  const body = {
+    statusCode,
+    error: error || ERRORS[statusCode],
+    message,
+  };
+  return buildResponse({ ...opts, statusCode, body });
 };
 const BAD_REQUEST = (opts = {}) =>
   buildErrorResponse({ statusCode: 400, ...opts });

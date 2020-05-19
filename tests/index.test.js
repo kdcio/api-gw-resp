@@ -84,7 +84,11 @@ describe('Build response', () => {
           ...RESP_TEMPLATE.headers,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ error: 'my bad' }),
+        body: JSON.stringify({
+          statusCode: 400,
+          error: 'Bad Request',
+          message: 'my bad',
+        }),
       },
     },
     {
@@ -93,6 +97,14 @@ describe('Build response', () => {
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 400,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          statusCode: 400,
+          error: 'Bad Request',
+        }),
       },
     },
     {
@@ -106,7 +118,11 @@ describe('Build response', () => {
           ...RESP_TEMPLATE.headers,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ error: 'wrong password' }),
+        body: JSON.stringify({
+          statusCode: 401,
+          error: 'Unauthorized',
+          message: 'wrong password',
+        }),
       },
     },
     {
@@ -115,6 +131,14 @@ describe('Build response', () => {
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 401,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          statusCode: 401,
+          error: 'Unauthorized',
+        }),
       },
     },
     {
@@ -128,7 +152,11 @@ describe('Build response', () => {
           ...RESP_TEMPLATE.headers,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ error: 'no permission' }),
+        body: JSON.stringify({
+          statusCode: 403,
+          error: 'Forbidden',
+          message: 'no permission',
+        }),
       },
     },
     {
@@ -137,12 +165,20 @@ describe('Build response', () => {
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 403,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          statusCode: 403,
+          error: 'Forbidden',
+        }),
       },
     },
     {
       description: 'NOT_FOUND response',
       method: 'NOT_FOUND',
-      errorMsg: 'no here',
+      errorMsg: 'not here',
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 404,
@@ -150,7 +186,11 @@ describe('Build response', () => {
           ...RESP_TEMPLATE.headers,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ error: 'no here' }),
+        body: JSON.stringify({
+          statusCode: 404,
+          error: 'Not Found',
+          message: 'not here',
+        }),
       },
     },
     {
@@ -159,6 +199,14 @@ describe('Build response', () => {
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 404,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          statusCode: 404,
+          error: 'Not Found',
+        }),
       },
     },
     {
@@ -172,7 +220,11 @@ describe('Build response', () => {
           ...RESP_TEMPLATE.headers,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ error: 'you are late' }),
+        body: JSON.stringify({
+          statusCode: 409,
+          error: 'Conflict',
+          message: 'you are late',
+        }),
       },
     },
     {
@@ -181,12 +233,20 @@ describe('Build response', () => {
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 409,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          statusCode: 409,
+          error: 'Conflict',
+        }),
       },
     },
     {
       description: 'SERVER_ERROR response',
       method: 'SERVER_ERROR',
-      errorMsg: 'ooopss',
+      errorMsg: 'our bad',
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 500,
@@ -194,7 +254,11 @@ describe('Build response', () => {
           ...RESP_TEMPLATE.headers,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ error: 'ooopss' }),
+        body: JSON.stringify({
+          statusCode: 500,
+          error: 'Internal Server Error',
+          message: 'our bad',
+        }),
       },
     },
     {
@@ -203,6 +267,14 @@ describe('Build response', () => {
       expected: {
         ...RESP_TEMPLATE,
         statusCode: 500,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          statusCode: 500,
+          error: 'Internal Server Error',
+        }),
       },
     },
     {
