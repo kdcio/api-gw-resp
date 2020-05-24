@@ -381,4 +381,9 @@ describe('Build response', () => {
       body: JSON.stringify({ message: 'hello world' }),
     });
   });
+
+  test('NO_CONTENT should have no Content-Type', async () => {
+    const request = response.NO_CONTENT();
+    expect(request.headers).not.toHaveProperty('Content-Type');
+  });
 });
