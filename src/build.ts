@@ -1,3 +1,4 @@
+import { BuildInput, BuildOutput } from './interfaces';
 import RESP_TEMPLATE from './constants/template';
 
 const buildBody = (body) => {
@@ -17,15 +18,15 @@ const buildResponse = ({
   body,
   cors = true,
   headers = {},
-  ...opts
-}) => {
+  ...rest
+}: BuildInput): BuildOutput => {
   const response = {
     ...RESP_TEMPLATE,
     headers:
       cors === false
         ? { ...headers }
         : { ...RESP_TEMPLATE.headers, ...headers },
-    ...opts,
+    ...rest,
     statusCode,
   };
 

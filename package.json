@@ -15,8 +15,9 @@
     "watch": "jest --watchAll",
     "coverage": "npm test -- --coverage",
     "lint:fix": "eslint src --ext .js --fix",
-    "lint": "eslint src --ext .js",
-    "bundle": "parcel build src/index.js --out-dir lib"
+    "lint": "eslint src --ext .ts",
+    "bundle": "ncc build src/index.ts -m -o lib",
+    "tsc": "tsc src/index.ts --noEmit"
   },
   "author": "Ian Dela Cruz <ian@kdcsoftware.com> (https://www.kdcsoftware.com)",
   "repository": {
@@ -41,21 +42,28 @@
     "@babel/core": "^7.9.6",
     "@babel/plugin-transform-runtime": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
+    "@types/jest": "^25.2.3",
+    "@typescript-eslint/eslint-plugin": "^3.0.0",
+    "@typescript-eslint/parser": "^3.0.0",
+    "@zeit/ncc": "^0.22.3",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.0.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-airbnb-typescript": "^7.2.1",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.13.1",
     "eslint-plugin-prettier": "^3.1.3",
     "husky": "^4.2.5",
     "jest": "^26.0.1",
     "lint-staged": "^10.2.2",
-    "parcel-bundler": "^1.12.4",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
     "regenerator-runtime": "^0.13.5",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.0.0",
+    "typescript": "^3.9.3"
   },
   "targets": {
     "main": {
