@@ -12,13 +12,21 @@ const buildBody = (body) => {
   return { body: undefined, contentType: undefined };
 };
 
+interface BuildInput {
+  statusCode: number;
+  body?: any;
+  cors?: boolean;
+  headers?: object;
+  opts?: any;
+}
+
 const buildResponse = ({
   statusCode,
   body,
   cors = true,
   headers = {},
   ...opts
-}) => {
+}: BuildInput) => {
   const response = {
     ...RESP_TEMPLATE,
     headers:
