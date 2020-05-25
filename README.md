@@ -6,6 +6,9 @@
 [![size](https://img.shields.io/bundlephobia/min/@kdcsoftware/api-gw-resp?style=for-the-badge)](https://bundlephobia.com/result?p=@kdcsoftware/api-gw-resp)
 [![license](https://img.shields.io/github/license/kdcsoftware/api-gw-resp?style=for-the-badge)](https://github.com/kdcsoftware/api-gw-resp/blob/master/LICENSE)
 
+[![Maintainability](https://img.shields.io/codeclimate/maintainability/kdcsoftware/api-gw-resp?style=for-the-badge)](https://codeclimate.com/github/kdcsoftware/api-gw-resp) [![Code Issues](https://img.shields.io/codeclimate/issues/kdcsoftware/api-gw-resp?style=for-the-badge)](https://codeclimate.com/github/kdcsoftware/api-gw-resp/issues)
+[![Technical Debt](https://img.shields.io/codeclimate/tech-debt/kdcsoftware/api-gw-resp?style=for-the-badge)](https://codeclimate.com/github/kdcsoftware/api-gw-resp/trends/technical_debt)
+
 This module will help you build a valid API Gateway response from your lambda function.
 
 ## Install
