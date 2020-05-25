@@ -4,7 +4,7 @@
     "project": "./tsconfig.json"
   },
   "extends": [
-    "airbnb-base",
+    "airbnb-typescript/base",
     "prettier",
     "plugin:import/errors",
     "plugin:import/warnings",
@@ -14,7 +14,7 @@
   "rules": {
     "complexity": ["error", 5],
     "max-lines": ["error", 50],
-    "prettier/prettier": ["error", "import"],
+    "prettier/prettier": ["error"],
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -24,7 +24,8 @@
         "ts": "never",
         "tsx": "never"
       }
-    ]
+    ],
+    "@typescript-eslint/camelcase": "off"
   },
   "env": {
     "commonjs": true,
