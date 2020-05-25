@@ -1,10 +1,12 @@
+import STATUS from './status';
+
 const ERRORS = {
-  '400': 'Bad Request',
-  '401': 'Unauthorized',
-  '403': 'Forbidden',
-  '404': 'Not Found',
-  '409': 'Conflict',
-  '500': 'Internal Server Error',
+  [STATUS.BAD_REQUEST]: 'Bad Request',
+  [STATUS.UNAUTHORIZED]: 'Unauthorized',
+  [STATUS.FORBIDDEN]: 'Forbidden',
+  [STATUS.NOT_FOUND]: 'Not Found',
+  [STATUS.CONFLICT]: 'Conflict',
+  [STATUS.SERVER_ERROR]: 'Internal Server Error',
 };
 
 export default ERRORS;

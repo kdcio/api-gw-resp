@@ -1,12 +1,14 @@
+import STATUS from './constants/status';
+
 export interface BuildInput {
-  statusCode: number;
+  statusCode: STATUS;
   body?: object | string;
   cors?: boolean;
   headers?: object;
 }
 
 export interface BuildErrorInput {
-  statusCode: number;
+  statusCode: STATUS;
   error?: string;
   message?: string;
 }
@@ -23,7 +25,7 @@ export interface OpsErrorInput {
 }
 
 export interface BuildOutput {
-  statusCode: number;
+  statusCode: STATUS;
   isBase64Encoded: boolean;
   headers: object;
   body?: object | string | undefined;

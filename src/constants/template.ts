@@ -1,5 +1,7 @@
+import STATUS from './status';
+
 const RESP_TEMPLATE = {
-  statusCode: 200,
+  statusCode: STATUS.OK,
   isBase64Encoded: false,
   headers: {
     'Access-Control-Allow-Origin': '*',
