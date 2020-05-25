@@ -16,7 +16,7 @@
     "coverage": "npm test -- --coverage",
     "lint:fix": "eslint src --ext .js --fix",
     "lint": "eslint src --ext .js",
-    "bundle": "ncc build src/index.ts"
+    "bundle": "ncc build src/index.ts -m -o lib"
   },
   "author": "Ian Dela Cruz <ian@kdcsoftware.com> (https://www.kdcsoftware.com)",
   "repository": {
