@@ -1,41 +1,5 @@
-export const RESP_TEMPLATE = {
-  statusCode: 200,
-  isBase64Encoded: false,
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Credentials': true,
-    'Access-Control-Allow-Headers': '*',
-  },
-  body: null,
-};
-
-const buildResponse = ({
-  statusCode,
-  body,
-  cors = true,
-  headers = {},
-  ...opts
-}) => {
-  const response = {
-    ...RESP_TEMPLATE,
-    headers:
-      cors === false
-        ? { ...headers }
-        : { ...RESP_TEMPLATE.headers, ...headers },
-    ...opts,
-    statusCode,
-  };
-
-  if (body && typeof body === 'object') {
-    response.body = JSON.stringify(body);
-    response.headers['Content-Type'] = 'application/json';
-  } else if (body && typeof body === 'string') {
-    response.body = body;
-    response.headers['Content-Type'] = 'text/plain';
-  }
-
-  return response;
-};
+import buildResponse from './build';
+import buildErrorResponse from './build-error';
 
 /** Successful operation */
 const OK = (opts = {}) => buildResponse({ statusCode: 200, ...opts });
@@ -43,24 +7,6 @@ const CREATED = (opts = {}) => buildResponse({ statusCode: 201, ...opts });
 const NO_CONTENT = (opts = {}) =>
   buildResponse({ statusCode: 204, ...opts, body: null });
 
-const ERRORS = {
-  '400': 'Bad Request',
-  '401': 'Unauthorized',
-  '403': 'Forbidden',
-  '404': 'Not Found',
-  '409': 'Conflict',
-  '500': 'Internal Server Error',
-};
-
-/** Failed operation */
-const buildErrorResponse = ({ statusCode, error, message, ...opts }) => {
-  const body = {
-    statusCode,
-    error: error || ERRORS[statusCode],
-    message,
-  };
-  return buildResponse({ ...opts, statusCode, body });
-};
 const BAD_REQUEST = (opts = {}) =>
   buildErrorResponse({ statusCode: 400, ...opts });
 const UNAUTHORIZED = (opts = {}) =>
@@ -80,7 +26,7 @@ const POST = (opts = {}) => CREATED(opts);
 const PUT = (opts = {}) => NO_CONTENT(opts);
 const DELETE = (opts = {}) => NO_CONTENT(opts);
 
-export const response = {
+const response = {
   OK,
   CREATED,
   NO_CONTENT,
@@ -95,3 +41,5 @@ export const response = {
   PUT,
   DELETE,
 };
+
+export default response;
