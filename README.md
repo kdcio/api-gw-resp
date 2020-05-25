@@ -17,7 +17,7 @@ npm i @kdcsoftware/api-gw-resp
 ## Usage
 
 ```js
-const { response } = require('@kdcsoftware/api-gw-resp');
+const response = require('@kdcsoftware/api-gw-resp');
 
 module.exports = (event) => {
   const body = {
@@ -76,7 +76,7 @@ All of the methods have the same API.
 
 ```js
 const parser = require('@kdcsoftware/api-gw-req');
-const { response } = require('@kdcsoftware/api-gw-resp');
+const response = require('@kdcsoftware/api-gw-resp');
 const db = require('./db');
 
 module.exports = async (event) => {
