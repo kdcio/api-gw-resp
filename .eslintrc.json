@@ -40,5 +40,5 @@
       }
     }
   },
-  "ignorePatterns": ["node_modules/", "coverage/", "tests/"]
+  "ignorePatterns": ["node_modules/", "coverage/", "tests/", "jest.config.js"]
 }
