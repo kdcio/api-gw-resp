@@ -14,7 +14,7 @@
     "test": "jest --no-cache",
     "watch": "jest --watchAll",
     "coverage": "npm test -- --coverage",
-    "lint:fix": "eslint src --ext .js --fix",
+    "lint:fix": "eslint src --ext .ts --fix",
     "lint": "eslint src --ext .ts",
     "bundle": "ncc build src/index.ts -m -o lib",
     "tsc": "tsc src/index.ts --noEmit"
@@ -78,7 +78,7 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "*.ts": [
       "eslint --fix",
       "pretty-quick --staged",
       "git add"
