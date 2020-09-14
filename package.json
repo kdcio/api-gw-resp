@@ -7,7 +7,6 @@
   "files": [
     "lib/*"
   ],
-  "type": "module",
   "scripts": {
     "build": "npm run clean && npm run bundle",
     "build:commonjs": "babel src --out-dir lib",

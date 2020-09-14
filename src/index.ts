@@ -1,5 +1,11 @@
+/* eslint-disable max-lines */
 import STATUS from './constants/status';
-import { OpsInput, OpsErrorInput, BuildOutput } from './interfaces';
+import {
+  OpsInput,
+  OpsRedirectInput,
+  OpsErrorInput,
+  BuildOutput,
+} from './interfaces';
 import buildResponse from './build';
 import buildErrorResponse from './build-error';
 
@@ -10,6 +16,12 @@ const CREATED = (opts: OpsInput): BuildOutput =>
   buildResponse({ statusCode: STATUS.CREATED, ...opts });
 const NO_CONTENT = (opts?: OpsInput): BuildOutput =>
   buildResponse({ statusCode: STATUS.NO_CONTENT, ...opts, body: null });
+const REDIRECT = ({ permanent, ...opts }: OpsRedirectInput) =>
+  buildResponse({
+    statusCode: permanent ? STATUS.REDIRECT_PERM : STATUS.REDIRECT_TEMP,
+    ...opts,
+    body: null,
+  });
 
 const BAD_REQUEST = (opts: OpsErrorInput): BuildOutput =>
   buildErrorResponse({ statusCode: STATUS.BAD_REQUEST, ...opts });
@@ -34,6 +46,7 @@ const response = Object.freeze({
   OK,
   CREATED,
   NO_CONTENT,
+  REDIRECT,
   BAD_REQUEST,
   UNAUTHORIZED,
   FORBIDDEN,

@@ -19,6 +19,14 @@ export interface OpsInput {
   headers?: object;
 }
 
+export interface OpsRedirectInput {
+  cors?: boolean;
+  headers: {
+    Location: string;
+  };
+  permanent: boolean;
+}
+
 export interface OpsErrorInput {
   error?: string;
   message?: string;
