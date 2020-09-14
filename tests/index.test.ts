@@ -386,4 +386,38 @@ describe('Build response', () => {
     const request = response.NO_CONTENT();
     expect(request.headers).not.toHaveProperty('Content-Type');
   });
+
+  test('REDIRECT Permanent', async () => {
+    const resp = response.REDIRECT({
+      permanent: true,
+      headers: { Location: 'https://www.kdcsoftware.com' },
+    });
+
+    expect(resp).toEqual({
+      ...RESP_TEMPLATE,
+      statusCode: 301,
+      headers: {
+        ...RESP_TEMPLATE.headers,
+        Location: 'https://www.kdcsoftware.com',
+      },
+      body: null,
+    });
+  });
+
+  test('REDIRECT Temporary', async () => {
+    const resp = response.REDIRECT({
+      permanent: false,
+      headers: { Location: 'https://www.kdcsoftware.com' },
+    });
+
+    expect(resp).toEqual({
+      ...RESP_TEMPLATE,
+      statusCode: 302,
+      headers: {
+        ...RESP_TEMPLATE.headers,
+        Location: 'https://www.kdcsoftware.com',
+      },
+      body: null,
+    });
+  });
 });
