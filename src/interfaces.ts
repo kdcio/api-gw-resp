@@ -36,5 +36,5 @@ export interface BuildOutput {
   statusCode: STATUS;
   isBase64Encoded: boolean;
   headers: object;
-  body?: object | string | undefined;
+  body?: object | string;
 }

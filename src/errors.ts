@@ -1,6 +1,6 @@
 import STATUS from './constants/status';
 import { OpsErrorInput, BuildOutput } from './interfaces';
-import buildErrorResponse from './build-error';
+import buildErrorResponse from './buildErrorResponse';
 
 export const BAD_REQUEST = (opts: OpsErrorInput): BuildOutput =>
   buildErrorResponse({ statusCode: STATUS.BAD_REQUEST, ...opts });

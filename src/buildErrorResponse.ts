@@ -1,5 +1,5 @@
 import { BuildErrorInput, BuildOutput } from './interfaces';
-import buildResponse from './build';
+import buildResponse from './buildResponse';
 import ERRORS from './constants/errors';
 
 /** Failed operation */

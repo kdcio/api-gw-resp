@@ -1,6 +1,6 @@
 import STATUS from './constants/status';
 import { OpsInput, OpsRedirectInput, BuildOutput } from './interfaces';
-import buildResponse from './build';
+import buildResponse from './buildResponse';
 
 /** Successful operation */
 export const OK = (opts: OpsInput): BuildOutput =>
