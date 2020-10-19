@@ -1,28 +1,28 @@
 # API Gateway Response Builder
 
-[![ver](https://img.shields.io/npm/v/@kdcsoftware/api-gw-resp?style=for-the-badge)](https://www.npmjs.com/package/@kdcsoftware/api-gw-resp)
-[![build](https://img.shields.io/github/workflow/status/kdcsoftware/api-gw-resp/build?style=for-the-badge)](https://github.com/kdcsoftware/api-gw-resp/actions?query=workflow%3Abuild)
-[![codecov](https://img.shields.io/codecov/c/github/kdcsoftware/api-gw-resp?style=for-the-badge)](https://codecov.io/gh/kdcsoftware/api-gw-resp)
-[![size](https://img.shields.io/bundlephobia/min/@kdcsoftware/api-gw-resp?style=for-the-badge)](https://bundlephobia.com/result?p=@kdcsoftware/api-gw-resp)
-[![license](https://img.shields.io/github/license/kdcsoftware/api-gw-resp?style=for-the-badge)](https://github.com/kdcsoftware/api-gw-resp/blob/master/LICENSE)
+[![ver](https://img.shields.io/npm/v/@kdcio/api-gw-resp?style=for-the-badge)](https://www.npmjs.com/package/@kdcio/api-gw-resp)
+[![build](https://img.shields.io/github/workflow/status/kdcio/api-gw-resp/build?style=for-the-badge)](https://github.com/kdcio/api-gw-resp/actions?query=workflow%3Abuild)
+[![codecov](https://img.shields.io/codecov/c/github/kdcio/api-gw-resp?style=for-the-badge)](https://codecov.io/gh/kdcio/api-gw-resp)
+[![size](https://img.shields.io/bundlephobia/min/@kdcio/api-gw-resp?style=for-the-badge)](https://bundlephobia.com/result?p=@kdcio/api-gw-resp)
+[![license](https://img.shields.io/github/license/kdcio/api-gw-resp?style=for-the-badge)](https://github.com/kdcio/api-gw-resp/blob/master/LICENSE)
 
-[![Maintainability](https://img.shields.io/codeclimate/maintainability/kdcsoftware/api-gw-resp?style=for-the-badge)](https://codeclimate.com/github/kdcsoftware/api-gw-resp) [![Code Issues](https://img.shields.io/codeclimate/issues/kdcsoftware/api-gw-resp?style=for-the-badge)](https://codeclimate.com/github/kdcsoftware/api-gw-resp/issues)
-[![Technical Debt](https://img.shields.io/codeclimate/tech-debt/kdcsoftware/api-gw-resp?style=for-the-badge)](https://codeclimate.com/github/kdcsoftware/api-gw-resp/trends/technical_debt)
+[![Maintainability](https://img.shields.io/codeclimate/maintainability/kdcio/api-gw-resp?style=for-the-badge)](https://codeclimate.com/github/kdcio/api-gw-resp) [![Code Issues](https://img.shields.io/codeclimate/issues/kdcio/api-gw-resp?style=for-the-badge)](https://codeclimate.com/github/kdcio/api-gw-resp/issues)
+[![Technical Debt](https://img.shields.io/codeclimate/tech-debt/kdcio/api-gw-resp?style=for-the-badge)](https://codeclimate.com/github/kdcio/api-gw-resp/trends/technical_debt)
 
 This module will help you build a valid API Gateway response from your lambda function.
 
 ## Install
 
 ```bash
-npm i @kdcsoftware/api-gw-resp
+npm i @kdcio/api-gw-resp
 ```
 
 ## Usage
 
 ```js
-const response = require('@kdcsoftware/api-gw-resp');
+import response from '@kdcio/api-gw-resp';
 
-module.exports = (event) => {
+export const listMovies = (event) => {
   const body = {
     movies: [
       { name: 'Lord of the Rings' },
@@ -79,11 +79,11 @@ All of the methods have the same API.
 ## Examples
 
 ```js
-const parser = require('@kdcsoftware/api-gw-req');
-const response = require('@kdcsoftware/api-gw-resp');
-const db = require('./db');
+import parser from '@kdcio/api-gw-req';
+import response from '@kdcio/api-gw-resp';
+import db from './db';
 
-module.exports = async (event) => {
+export const movie = async (event) => {
   const request = parser(event);
   let body = null;
 
@@ -120,4 +120,4 @@ module.exports = async (event) => {
 
 ## See also
 
-[@kdcsoftware/api-gw-req](https://github.com/kdcsoftware/api-gw-req)
+[@kdcio/api-gw-req](https://github.com/kdcio/api-gw-req)

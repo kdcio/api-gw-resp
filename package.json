@@ -1,5 +1,5 @@
 {
-  "name": "@kdcsoftware/api-gw-resp",
+  "name": "@kdcio/api-gw-resp",
   "version": "1.1.0",
   "description": "API Gateway response builder",
   "main": "lib/index.js",
@@ -22,9 +22,9 @@
   "author": "Ian Dela Cruz <ian@kdcsoftware.com> (https://www.kdcsoftware.com)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kdcsoftware/api-gw-resp"
+    "url": "https://github.com/kdcio/api-gw-resp"
   },
-  "homepage": "https://github.com/kdcsoftware/api-gw-resp",
+  "homepage": "https://github.com/kdcio/api-gw-resp",
   "license": "MIT",
   "keywords": [
     "kdc",
@@ -80,8 +80,7 @@
   "lint-staged": {
     "*.ts": [
       "eslint --fix",
-      "pretty-quick --staged",
-      "git add"
+      "pretty-quick --staged"
     ]
   }
 }
