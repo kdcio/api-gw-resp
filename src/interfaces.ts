@@ -5,6 +5,7 @@ export interface BuildInput {
   body?: object | string;
   cors?: boolean;
   headers?: object;
+  origin?: string;
 }
 
 export interface BuildErrorInput {
@@ -17,6 +18,7 @@ export interface OpsInput {
   body?: object | string;
   cors?: boolean;
   headers?: object;
+  origin?: string;
 }
 
 export interface OpsRedirectInput {

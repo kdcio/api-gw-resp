@@ -25,7 +25,9 @@
         "tsx": "never"
       }
     ],
-    "@typescript-eslint/camelcase": "off"
+    "@typescript-eslint/camelcase": "off",
+    "indent": "off",
+    "@typescript-eslint/indent": "off"
   },
   "env": {
     "commonjs": true,

@@ -16,16 +16,22 @@ const buildBody = (body) => {
 const buildResponse = ({
   statusCode,
   body,
+  origin = '*',
   cors = true,
   headers = {},
   ...rest
 }: BuildInput): BuildOutput => {
+  const finalHeaders =
+    cors === false
+      ? { ...headers }
+      : {
+          ...RESP_TEMPLATE.headers,
+          'Access-Control-Allow-Origin': origin,
+          ...headers,
+        };
   const response = {
     ...RESP_TEMPLATE,
-    headers:
-      cors === false
-        ? { ...headers }
-        : { ...RESP_TEMPLATE.headers, ...headers },
+    headers: finalHeaders,
     ...rest,
     statusCode,
   };

@@ -382,6 +382,23 @@ describe('Build response', () => {
     });
   });
 
+  test('GET with origin', async () => {
+    const request = response.OK({
+      body: { message: 'hello world' },
+      origin: 'trustedorigin.com',
+    });
+
+    expect(request).toEqual({
+      ...RESP_TEMPLATE,
+      headers: {
+        ...RESP_TEMPLATE.headers,
+        'Access-Control-Allow-Origin': 'trustedorigin.com',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ message: 'hello world' }),
+    });
+  });
+
   test('NO_CONTENT should have no Content-Type', async () => {
     const request = response.NO_CONTENT();
     expect(request.headers).not.toHaveProperty('Content-Type');
