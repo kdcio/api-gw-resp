@@ -69,6 +69,7 @@ All of the methods have the same API.
 | ------- | ------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | body    | null    | JS object that will converted into JSON string. If present, a _Content-Type_ of _application/json_ will be added to the header. |
 | cors    | true    | Add cors in header                                                                                                              |
+| origin  | \*      | Set specific origin                                                                                                             |
 | headers | {}      | Additional headers                                                                                                              |
 
 ## Examples
