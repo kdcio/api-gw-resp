@@ -437,4 +437,14 @@ describe('Build response', () => {
       body: null,
     });
   });
+
+  test('Override Content-Type', async () => {
+    const request = response.OK({
+      body: 'hello',
+      headers: {
+        'Content-Type': 'text/html; charset=utf-8',
+      },
+    });
+    expect(request.headers['Content-Type']).toBe('text/html; charset=utf-8');
+  });
 });

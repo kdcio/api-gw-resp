@@ -5,11 +5,9 @@ const buildBody = (body) => {
   if (body && typeof body === 'object') {
     return { body: JSON.stringify(body), contentType: 'application/json' };
   }
-
   if (body && typeof body === 'string') {
     return { body, contentType: 'text/plain' };
   }
-
   return { body: undefined, contentType: undefined };
 };
 
@@ -29,6 +27,7 @@ const buildResponse = ({
           'Access-Control-Allow-Origin': origin,
           ...headers,
         };
+
   const response = {
     ...RESP_TEMPLATE,
     headers: finalHeaders,
@@ -39,7 +38,8 @@ const buildResponse = ({
   const { body: bBody, contentType } = buildBody(body);
   if (bBody) {
     response.body = bBody;
-    response.headers['Content-Type'] = contentType;
+    if (!headers['Content-Type'])
+      response.headers['Content-Type'] = contentType;
   }
 
   return response;
