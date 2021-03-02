@@ -58,6 +58,7 @@ The function above will return
 12. POST (alias of CREATED)
 13. PUT (alias of NO_CONTENT)
 14. DELETE (alias of NO_CONTENT)
+15. ERROR - This will auto detect which error code to send based on the message.
 
 ## API
 
@@ -86,29 +87,58 @@ export const movie = async (event) => {
       const movies = db.listMovies();
       return response.GET({ body: { movies } });
     } catch (e) {
-      return response.BAD_REQUEST({ body: e });
+      return response.BAD_REQUEST({ message: e.message });
     }
   } else if (event.method === 'POST') {
     try {
       const id = await db.insertMove(request.body);
       return response.POST({ body: { id } });
     } catch (e) {
-      return response.BAD_REQUEST({ body: e });
+      return response.BAD_REQUEST({ message: e.message });
     }
   } else if (event.method === 'PUT') {
     try {
       await db.updateMove(request.body);
       return response.PUT();
     } catch (e) {
-      return response.CONFLICT({ body: e });
+      return response.CONFLICT({ message: e.message });
     }
   }
 
   return response.BAD_REQUEST({
-    body: {
-      message: 'Invalid method',
-    },
+    message: 'Invalid method',
   });
+};
+```
+
+Using `ERROR` method:
+
+```js
+import parser from '@kdcio/api-gw-resp';
+import response from '@kdcio/api-gw-resp';
+import db from './db';
+
+export const movie = async (event) => {
+  const request = parser(event);
+  let body = null;
+
+  try {
+    if (event.method === 'GET') {
+      const movies = db.listMovies();
+      return response.GET({ body: { movies } });
+    } else if (event.method === 'POST') {
+      const id = await db.insertMove(request.body);
+      return response.POST({ body: { id } });
+    } else if (event.method === 'PUT') {
+      await db.updateMove(request.body);
+      return response.PUT();
+    } else {
+      throw new Error('Invalid method');
+    }
+  } catch (e) {
+    // Will determine the correct status code based on the error message
+    return response.ERROR({ message: e.message });
+  }
 };
 ```
 

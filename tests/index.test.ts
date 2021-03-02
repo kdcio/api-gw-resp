@@ -355,6 +355,114 @@ describe('Build response', () => {
         statusCode: 204,
       },
     },
+    {
+      description: 'ERROR response Bad Request',
+      method: 'ERROR',
+      errorMsg: 'Missing parameter',
+      expected: {
+        ...RESP_TEMPLATE,
+        statusCode: 400,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          statusCode: 400,
+          error: 'Bad Request',
+          message: 'Missing parameter',
+        }),
+      },
+    },
+    {
+      description: 'ERROR response unauthorized',
+      method: 'ERROR',
+      errorMsg: 'You are unauthorized. Please login.',
+      expected: {
+        ...RESP_TEMPLATE,
+        statusCode: 401,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          statusCode: 401,
+          error: 'Unauthorized',
+          message: 'You are unauthorized. Please login.',
+        }),
+      },
+    },
+    {
+      description: 'ERROR response forbidden',
+      method: 'ERROR',
+      errorMsg: 'You are forbidden to access this resource.',
+      expected: {
+        ...RESP_TEMPLATE,
+        statusCode: 403,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          statusCode: 403,
+          error: 'Forbidden',
+          message: 'You are forbidden to access this resource.',
+        }),
+      },
+    },
+    {
+      description: 'ERROR response not found',
+      method: 'ERROR',
+      errorMsg: 'Resource not found.',
+      expected: {
+        ...RESP_TEMPLATE,
+        statusCode: 404,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          statusCode: 404,
+          error: 'Not Found',
+          message: 'Resource not found.',
+        }),
+      },
+    },
+    {
+      description: 'ERROR response conflict',
+      method: 'ERROR',
+      errorMsg: 'Item is a duplicate.',
+      expected: {
+        ...RESP_TEMPLATE,
+        statusCode: 409,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          statusCode: 409,
+          error: 'Conflict',
+          message: 'Item is a duplicate.',
+        }),
+      },
+    },
+    {
+      description: 'ERROR response server error',
+      method: 'ERROR',
+      errorMsg: "We don't know this error",
+      expected: {
+        ...RESP_TEMPLATE,
+        statusCode: 500,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          statusCode: 500,
+          error: 'Internal Server Error',
+          message: "We don't know this error",
+        }),
+      },
+    },
   ].forEach(({ description, method, body, errorMsg, expected }) => {
     test(description, async () => {
       let request;
