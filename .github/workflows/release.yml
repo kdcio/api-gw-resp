@@ -1,8 +1,11 @@
 name: publish
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**/README.md'
 
 jobs:
   publish:
@@ -27,12 +30,10 @@ jobs:
       - run: npm test
       - run: npm run lint
       - run: npm run build
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-      - uses: actions/setup-node@v1
+      - name: Create Release Pull Request or Publish to npm
+        uses: changesets/action@master
         with:
-          registry-url: 'https://npm.pkg.github.com'
-      - run: npm publish
+          publish: npm run-script release
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
