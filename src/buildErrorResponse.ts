@@ -1,6 +1,6 @@
 import { BuildErrorInput, BuildOutput } from './interfaces';
 import buildResponse from './buildResponse';
-import ERRORS from './constants/errors';
+import { ERRORS } from './constants/errors';
 
 /** Failed operation */
 const buildErrorResponse = ({

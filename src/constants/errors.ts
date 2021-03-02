@@ -1,6 +1,6 @@
 import STATUS from './status';
 
-const ERRORS = {
+export const ERRORS = {
   [STATUS.BAD_REQUEST]: 'Bad Request',
   [STATUS.UNAUTHORIZED]: 'Unauthorized',
   [STATUS.FORBIDDEN]: 'Forbidden',
@@ -9,4 +9,10 @@ const ERRORS = {
   [STATUS.SERVER_ERROR]: 'Internal Server Error',
 };
 
-export default ERRORS;
+export const ERR_MSGS = [
+  { status: STATUS.BAD_REQUEST, regex: /missing|invalid/i },
+  { status: STATUS.UNAUTHORIZED, regex: /unauthorized/i },
+  { status: STATUS.FORBIDDEN, regex: /forbidden/i },
+  { status: STATUS.NOT_FOUND, regex: /not found/i },
+  { status: STATUS.CONFLICT, regex: /conflict|duplicate/i },
+];
