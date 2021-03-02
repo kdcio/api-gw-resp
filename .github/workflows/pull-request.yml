@@ -4,16 +4,14 @@ on:
   pull_request:
     branches: [master]
     paths-ignore:
-      - '**/README.md'
+      - '**/**.md'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
         with:
           node-version: '12.x'
       - name: Cache node modules

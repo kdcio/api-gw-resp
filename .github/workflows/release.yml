@@ -1,21 +1,25 @@
-name: publish
+name: release
 
 on:
   push:
     branches:
       - master
     paths-ignore:
-      - '**/README.md'
+      - '**/**.md'
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@master
+        with:
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
+
+      - uses: actions/setup-node@master
         with:
           node-version: '12.x'
-          registry-url: https://registry.npmjs.org/
+
       - name: Cache node modules
         uses: actions/cache@v2
         env:
@@ -26,14 +30,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-${{ runner.os }}-
-      - run: npm ci
-      - run: npm test
-      - run: npm run lint
-      - run: npm run build
+
+      - name: Install Dependencies
+        run: npm install
+
       - name: Create Release Pull Request or Publish to npm
+        id: changesets
         uses: changesets/action@master
         with:
-          publish: npm run-script release
+          publish: npm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
