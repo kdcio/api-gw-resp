@@ -16,7 +16,9 @@
     "coverage": "npm test -- --coverage",
     "lint:fix": "eslint src --ext .ts --fix",
     "lint": "eslint src --ext .ts",
-    "tsc": "tsc src/index.ts --noEmit"
+    "tsc": "tsc src/index.ts --noEmit",
+    "changeset": "changeset",
+    "release": "changeset publish"
   },
   "author": "Ian Dela Cruz <ian@kdcsoftware.com> (https://www.kdcsoftware.com)",
   "repository": {
@@ -42,6 +44,7 @@
     "@babel/core": "^7.12.3",
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
+    "@changesets/cli": "^2.14.1",
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^6.0.0",
