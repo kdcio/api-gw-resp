@@ -1,4 +1,5 @@
 import STATUS from './constants/status';
+import { ERR_MSGS } from './constants/errors';
 import { OpsErrorInput, BuildOutput } from './interfaces';
 import buildErrorResponse from './buildErrorResponse';
 
@@ -14,3 +15,11 @@ export const CONFLICT = (opts: OpsErrorInput): BuildOutput =>
   buildErrorResponse({ statusCode: STATUS.CONFLICT, ...opts });
 export const SERVER_ERROR = (opts: OpsErrorInput): BuildOutput =>
   buildErrorResponse({ statusCode: STATUS.SERVER_ERROR, ...opts });
+
+export const ERROR = (opts: OpsErrorInput): BuildOutput => {
+  const status = ERR_MSGS.find((err) => err.regex.test(opts.message));
+  return buildErrorResponse({
+    statusCode: status?.status || STATUS.SERVER_ERROR,
+    ...opts,
+  });
+};
