@@ -80,12 +80,16 @@ Options
 | Option    | Type   | Required                | Default | Description                                                 |
 | --------- | ------ | ----------------------- | ------- | ----------------------------------------------------------- |
 | permanent | bool   | :ballot_box_with_check: | none    | If true, status code will be 301. Otherwise it will be 302. |
+| location  | bool   | :ballot_box_with_check: | none    | The new url where the resource has been moved.              |
 | headers   | object | :ballot_box_with_check: | {}      | Specify additional headers                                  |
 
 Examples:
 
 ```js
-response.REDIRECT({ permanent: true });
+response.REDIRECT({
+  permanent: true,
+  location: 'https://www.google.com',
+});
 ```
 
 ### Client Error responses
