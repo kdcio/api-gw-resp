@@ -9,9 +9,12 @@ export const CREATED = (opts: OpsInput): BuildOutput =>
   buildResponse({ statusCode: STATUS.CREATED, ...opts });
 export const NO_CONTENT = (opts?: OpsInput): BuildOutput =>
   buildResponse({ statusCode: STATUS.NO_CONTENT, ...opts, body: null });
-export const REDIRECT = ({ permanent, ...opts }: OpsRedirectInput) =>
+export const REDIRECT = ({ permanent, location, ...opts }: OpsRedirectInput) =>
   buildResponse({
     statusCode: permanent ? STATUS.REDIRECT_PERM : STATUS.REDIRECT_TEMP,
     ...opts,
+    headers: {
+      Location: location,
+    },
     body: null,
   });
