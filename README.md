@@ -54,12 +54,12 @@ The function above will return
 
 Options
 
-| Option  | Type                   | Default | Description                                                                                                                                                                                                        |
-| ------- | ---------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| body    | object, string or null | null    | <ul><li>**object** will be converted into JSON string and will have a _Content-Type_ of _application/json_ in the header.</li><li>**string** will have a a _Content-Type_ of _text/plain_ in the header.</li></ul> |
-| cors    | bool                   | true    | If true, will add cors in header                                                                                                                                                                                   |
-| origin  | string                 | \*      | Set specific origin                                                                                                                                                                                                |
-| headers | object                 | {}      | Specify additional headers                                                                                                                                                                                         |
+| Option  | Type                   | Required                | Default | Description                                                                                                                                                                                                        |
+| ------- | ---------------------- | ----------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| body    | object, string or null | :ballot_box_with_check: | null    | <ul><li>**object** will be converted into JSON string and will have a _Content-Type_ of _application/json_ in the header.</li><li>**string** will have a a _Content-Type_ of _text/plain_ in the header.</li></ul> |
+| cors    | bool                   | :ballot_box_with_check: | true    | If true, will add cors in header                                                                                                                                                                                   |
+| origin  | string                 | :ballot_box_with_check: | \*      | Set specific origin                                                                                                                                                                                                |
+| headers | object                 | :ballot_box_with_check: | {}      | Specify additional headers                                                                                                                                                                                         |
 
 Examples:
 
@@ -77,10 +77,10 @@ response.NO_CONTENT();
 
 Options
 
-| Option    | Type   | Default | Description                                                 |
-| --------- | ------ | ------- | ----------------------------------------------------------- |
-| permanent | bool   | none    | If true, status code will be 301. Otherwise it will be 302. |
-| headers   | object | {}      | Specify additional headers                                  |
+| Option    | Type   | Required                | Default | Description                                                 |
+| --------- | ------ | ----------------------- | ------- | ----------------------------------------------------------- |
+| permanent | bool   | :ballot_box_with_check: | none    | If true, status code will be 301. Otherwise it will be 302. |
+| headers   | object | :ballot_box_with_check: | {}      | Specify additional headers                                  |
 
 Examples:
 
