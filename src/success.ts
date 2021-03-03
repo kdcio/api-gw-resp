@@ -15,9 +15,3 @@ export const REDIRECT = ({ permanent, ...opts }: OpsRedirectInput) =>
     ...opts,
     body: null,
   });
-
-/** SUccessful response via method */
-export const GET = (opts: OpsInput) => OK(opts);
-export const POST = (opts: OpsInput) => CREATED(opts);
-export const PUT = (opts: OpsInput) => NO_CONTENT(opts);
-export const DELETE = (opts: OpsInput) => NO_CONTENT(opts);
