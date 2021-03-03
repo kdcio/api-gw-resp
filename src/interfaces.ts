@@ -23,9 +23,8 @@ export interface OpsInput {
 
 export interface OpsRedirectInput {
   cors?: boolean;
-  headers: {
-    Location: string;
-  };
+  location: string;
+  headers?: object;
   permanent: boolean;
 }
 

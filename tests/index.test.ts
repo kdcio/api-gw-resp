@@ -437,7 +437,7 @@ describe('Build response', () => {
   test('REDIRECT Permanent', async () => {
     const resp = response.REDIRECT({
       permanent: true,
-      headers: { Location: 'https://www.kdcsoftware.com' },
+      location: 'https://www.kdcsoftware.com',
     });
 
     expect(resp).toEqual({
@@ -454,7 +454,7 @@ describe('Build response', () => {
   test('REDIRECT Temporary', async () => {
     const resp = response.REDIRECT({
       permanent: false,
-      headers: { Location: 'https://www.kdcsoftware.com' },
+      location: 'https://www.kdcsoftware.com',
     });
 
     expect(resp).toEqual({
