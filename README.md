@@ -54,11 +54,7 @@ The function above will return
 8. NOT_FOUND
 9. CONFLICT
 10. SERVER_ERROR
-11. GET (alias of OK)
-12. POST (alias of CREATED)
-13. PUT (alias of NO_CONTENT)
-14. DELETE (alias of NO_CONTENT)
-15. ERROR - This will auto detect which error code to send based on the message.
+11. ERROR - This will auto detect which error code to send based on the message.
 
 ## API
 
@@ -85,21 +81,21 @@ export const movie = async (event) => {
   if (event.method === 'GET') {
     try {
       const movies = db.listMovies();
-      return response.GET({ body: { movies } });
+      return response.OK({ body: { movies } });
     } catch (e) {
       return response.BAD_REQUEST({ message: e.message });
     }
   } else if (event.method === 'POST') {
     try {
       const id = await db.insertMove(request.body);
-      return response.POST({ body: { id } });
+      return response.OK({ body: { id } });
     } catch (e) {
       return response.BAD_REQUEST({ message: e.message });
     }
   } else if (event.method === 'PUT') {
     try {
       await db.updateMove(request.body);
-      return response.PUT();
+      return response.NO_CONTENT();
     } catch (e) {
       return response.CONFLICT({ message: e.message });
     }
@@ -125,13 +121,13 @@ export const movie = async (event) => {
   try {
     if (event.method === 'GET') {
       const movies = db.listMovies();
-      return response.GET({ body: { movies } });
+      return response.OK({ body: { movies } });
     } else if (event.method === 'POST') {
       const id = await db.insertMove(request.body);
-      return response.POST({ body: { id } });
+      return response.OK({ body: { id } });
     } else if (event.method === 'PUT') {
       await db.updateMove(request.body);
-      return response.PUT();
+      return response.NO_CONTENT();
     } else {
       throw new Error('Invalid method');
     }
