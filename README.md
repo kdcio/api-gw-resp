@@ -50,16 +50,16 @@ The function above will return
 | ---------- | ---- | --------------------------------------------------------------------------------------------------------------------------- |
 | OK         | 200  | Request has succeeded and the message body contains the requested information.                                              |
 | CREATED    | 201  | Request has succeeded and a new resource has been created. The message body may contain information about the new resource. |
-| NO_CONTENT | 204  | Request has succeeded but there is not content to be returned.                                                              |
+| NO_CONTENT | 204  | Request has succeeded but there is no content to be returned.                                                               |
 
 Options
 
-| Option  | Type                   | Required                | Default | Description                                                                                                                                                                                                        |
-| ------- | ---------------------- | ----------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| body    | object, string or null | :ballot_box_with_check: | null    | <ul><li>**object** will be converted into JSON string and will have a _Content-Type_ of _application/json_ in the header.</li><li>**string** will have a a _Content-Type_ of _text/plain_ in the header.</li></ul> |
-| cors    | bool                   | :ballot_box_with_check: | true    | If true, will add cors in header                                                                                                                                                                                   |
-| origin  | string                 | :ballot_box_with_check: | \*      | Set specific origin                                                                                                                                                                                                |
-| headers | object                 | :ballot_box_with_check: | {}      | Specify additional headers                                                                                                                                                                                         |
+| Option  | Type                   | Required                | Default | Description                                                                                                                                                                                                      |
+| ------- | ---------------------- | ----------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| body    | object, string or null | :ballot_box_with_check: | null    | <ul><li>**object** will be converted into JSON string and will have a _Content-Type_ of _application/json_ in the header.</li><li>**string** will have a _Content-Type_ of _text/plain_ in the header.</li></ul> |
+| cors    | bool                   | :ballot_box_with_check: | true    | If true, will add cors in header                                                                                                                                                                                 |
+| origin  | string                 | :ballot_box_with_check: | \*      | Set specific origin                                                                                                                                                                                              |
+| headers | object                 | :ballot_box_with_check: | {}      | Specify additional headers                                                                                                                                                                                       |
 
 Examples:
 
@@ -96,7 +96,7 @@ response.REDIRECT({
 
 | Method       | Code | Description                                                                                                           |
 | ------------ | ---- | --------------------------------------------------------------------------------------------------------------------- |
-| BAD_REQUEST  | 400  | The server could not understand the request due to invalid syntax or missing paramters.                               |
+| BAD_REQUEST  | 400  | The server could not understand the request due to invalid syntax or missing parameters.                              |
 | UNAUTHORIZED | 401  | The client must authenticate itself to get the requested response.                                                    |
 | FORBIDDEN    | 403  | The client is not allowed to access the requested resource. Unlike 401, the client's identity is known to the server. |
 | NOT_FOUND    | 404  | The server can not find the requested resource.                                                                       |
