@@ -1,5 +1,15 @@
 # @kdcio/api-gw-resp
 
+## 1.6.0
+
+### Minor Changes
+
+- b9389c9: Add location parameter to REDIRECT
+
+### Patch Changes
+
+- fb19f16: Improve documentation
+
 ## 1.5.0
 
 ### Minor Changes
