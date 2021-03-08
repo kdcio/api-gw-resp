@@ -154,13 +154,13 @@ Options
 
 Error Messages
 
-| Error Response | Regex matcher            |
-| -------------- | ------------------------ |
-| BAD_REQUEST    | `/missing\|invalid/i`    |
-| UNAUTHORIZED   | `/unauthorized/i`        |
-| FORBIDDEN      | `/forbidden/i`           |
-| NOT_FOUND      | `/not found/i`           |
-| CONFLICT       | `/conflict\|duplicate/i` |
+| Error Response | Regex matcher               |
+| -------------- | --------------------------- |
+| BAD_REQUEST    | `/missing\|invalid/i`       |
+| UNAUTHORIZED   | `/unauthorized/i`           |
+| FORBIDDEN      | `/forbidden\|not allowed/i` |
+| NOT_FOUND      | `/not found/i`              |
+| CONFLICT       | `/conflict\|duplicate/i`    |
 
 Examples:
 
