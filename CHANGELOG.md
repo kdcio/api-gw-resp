@@ -1,5 +1,11 @@
 # @kdcio/api-gw-resp
 
+## 1.7.1
+
+### Patch Changes
+
+- 6ce2f54: Fix auto publish to npm
+
 ## 1.7.0
 
 ### Minor Changes
