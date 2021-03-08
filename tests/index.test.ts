@@ -332,6 +332,24 @@ describe('Build response', () => {
       },
     },
     {
+      description: 'ERROR response not allowed',
+      method: 'ERROR',
+      errorMsg: 'You are not allowed to access this resource.',
+      expected: {
+        ...RESP_TEMPLATE,
+        statusCode: 403,
+        headers: {
+          ...RESP_TEMPLATE.headers,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          statusCode: 403,
+          error: 'Forbidden',
+          message: 'You are not allowed to access this resource.',
+        }),
+      },
+    },
+    {
       description: 'ERROR response not found',
       method: 'ERROR',
       errorMsg: 'Resource not found.',

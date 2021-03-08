@@ -12,7 +12,7 @@ export const ERRORS = {
 export const ERR_MSGS = [
   { status: STATUS.BAD_REQUEST, regex: /missing|invalid/i },
   { status: STATUS.UNAUTHORIZED, regex: /unauthorized/i },
-  { status: STATUS.FORBIDDEN, regex: /forbidden/i },
+  { status: STATUS.FORBIDDEN, regex: /forbidden|not allowed/i },
   { status: STATUS.NOT_FOUND, regex: /not found/i },
   { status: STATUS.CONFLICT, regex: /conflict|duplicate/i },
 ];
