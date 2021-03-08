@@ -18,7 +18,7 @@
     "lint": "eslint src --ext .ts",
     "tsc": "tsc src/index.ts --noEmit",
     "changeset": "changeset",
-    "release": "changeset publish"
+    "release": "npm run build && changeset publish"
   },
   "author": "Ian Dela Cruz <ian@kdcsoftware.com> (https://www.kdcsoftware.com)",
   "repository": {
