@@ -1,5 +1,11 @@
 # @kdcio/api-gw-resp
 
+## 1.7.0
+
+### Minor Changes
+
+- 7ee972f: Add "not allowed" in forbidden error detection
+
 ## 1.6.0
 
 ### Minor Changes
