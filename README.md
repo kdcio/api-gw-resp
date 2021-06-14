@@ -176,7 +176,7 @@ try {
 ## More Examples
 
 ```js
-import parser from '@kdcio/api-gw-resp';
+import parser from '@kdcio/api-gw-req';
 import response from '@kdcio/api-gw-resp';
 import db from './db';
 
@@ -216,7 +216,7 @@ export const movie = async (event) => {
 Using `ERROR` method:
 
 ```js
-import parser from '@kdcio/api-gw-resp';
+import parser from '@kdcio/api-gw-req';
 import response from '@kdcio/api-gw-resp';
 import db from './db';
 
@@ -254,7 +254,7 @@ You can also:
 
 ## See also
 
-[@kdcio/api-gw-resp](https://github.com/kdcio/api-gw-resp)
+[@kdcio/api-gw-req](https://github.com/kdcio/api-gw-req)
 
 ## License
 
